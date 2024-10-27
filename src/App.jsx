@@ -1,6 +1,7 @@
 
 import './App.css'
-import HelloWord from './HelloWord'
+import ListEmpComponents from './Components/ListEmpComponent'
+
 
 
 function App() {
@@ -8,8 +9,7 @@ function App() {
 
   return (
     <>
-    <HelloWord></HelloWord>
-
+   <ListEmpComponents />
     </>
   )
 }

@@ -1,33 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { listEmpl } from '../services/EmpService';
 
 const ListEmpComponent = () => {
 
-    const dummyData = [
-        {
-            'id': 1,
-            'firstName' : 'imad',
-            'lastName' : 'mellahi',
-            'mail': 'imad@gmail.com'
+    const [emps , setEmps] = useState([]) ;
 
-        },
-        {
-            'id': 2,
-            'firstName' : 'imad2',
-            'lastName' : 'mellahi2',
-            'mail': 'imad2@gmail.com'
+    useEffect(() =>{
+        listEmpl().then((res)=>{
+            setEmps(res.data)
+        }).catch(err=>{
+            console.error(err);
+        })
 
-        },
-        {
-            'id': 3,
-            'firstName' : 'imad3',
-            'lastName' : 'mellahi3',
-            'mail': 'imad3@gmail.com'
-
-        }
-    ]
+    },[])
+    
 
     return (
-        <h2> List Emp Component </h2>
+        <div className='container'>
+             <h2> List Emploees : </h2>
+            <table className='table table-striped table-bordered'>
+                <thead>
+                    <th>Id Employee</th>
+                    <th>First Name </th>
+                    <th>Last Name </th>
+                    <th>Email </th>
+                </thead>
+                <tbody>
+                    {
+                        emps.map(emp =>
+                            <tr key={emp.id}>
+                                <td>{emp.id}</td>
+                                <td>{emp.firstName}</td>
+                                <td>{emp.lastName}</td>
+                                <td>{emp.mail}</td>
+                            </tr>
+                            )
+                    }
+                </tbody>
+            </table>
+        </div>
     )
  
 }
