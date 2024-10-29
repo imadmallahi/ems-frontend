@@ -1,5 +1,7 @@
-import axion from 'ems-frontend\node_modules\axion'
+import axios from 'axios';
 
-const REST_API= 'http://localhost:8080/employees'
 
-export const listEmpl = ()=>  axion.get(REST_API)
+
+const REST_API= 'http://localhost:8081/api/employees'
+
+export const listEmpl = ()=> axios.get(REST_API)
